@@ -1,0 +1,36 @@
+### ADDING SUBMODULES####################################################
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+before_script:
+  - apk update && apk add git
+  - git submodule sync --recursive
+  - git submodule update --init --recursive
+  - apk update
+# Defines the stages in the Gitlab-CI Pipeline
+stages:
+  - test
+  - deploy
+### BUILD ####################################################
+test-job:
+  image: node:10-alpine
+  stage: test
+    # Script to run for building the application
+  script:
+    - 'npm install typescript@2.9.2 -g'
+    - 'npm install'
+    - 'npm run coverage'
+  artifacts:
+    paths:
+      - coverage/
+
+pages:
+  image: node:10-alpine
+  stage: deploy
+  dependencies:
+    - test-job
+  script:
+    - mv coverage/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days

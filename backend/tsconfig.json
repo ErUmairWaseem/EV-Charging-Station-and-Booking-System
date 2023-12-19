@@ -1,0 +1,57 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "noImplicitAny": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "suppressImplicitAnyIndexErrors": true,
+        "types": [
+            "node",
+            "express",
+            "mocha"
+        ],
+        "baseUrl": ".",
+        "outDir": "./out",
+        "paths": {
+            "controller/*": [
+                "/src/controller/*"
+            ],
+            "util/*": [
+                "/src/util/*"
+            ],
+            "service/*": [
+                "/src/service/*"
+            ],
+            "model/*": [
+                "/src/model/*"
+            ],
+            "config/*": [
+                "/src/config/*"
+            ],
+            "dto/*": [
+                "/src/dto/*"
+            ],
+            "db/*": [
+                "/src/db/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.json"
+    ],
+    "exclude": [
+        "node_modules",
+        "src/test"
+    ]
+}
